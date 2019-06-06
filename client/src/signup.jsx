@@ -38,6 +38,29 @@ function Signup() {
     type === 'checkbox' ? set[name](type => type.concat(value)) : set[name](value);
   }
 
+  
+  function checkUploadResult(resultEvent) {
+   if (resultEvent.event === 'success') {
+    console.log(resultEvent); 
+    console.log(username);
+
+      set.profilePicURL(resultEvent.info.thumbnail_url);
+     
+     
+   }
+ }
+  
+  function showWidget() {
+    event.preventDefault()
+    let widget = window.cloudinary.openUploadWidget({
+      cloudName: "df4keaubv",
+      uploadPreset: "pch5wvc7",
+    }, (error, result) => { checkUploadResult(result) });
+    
+    // widget.open() is currently not a function
+    //widget.open()
+  }
+
   return (
     <div className="container">
       <Header />
@@ -62,7 +85,7 @@ function Signup() {
               </div>
               <div className="form-group">
                 <label htmlFor="name">Display Name</label>
-                <input type="text" className="form-control" name="displayName" id="displayName" onChange={handleChange} placeholder="Enter your Display Name" />
+                <input type="text" className="form-control" name="displayName" id="name" onChange={handleChange} placeholder="Enter your Display Name" />
               </div>
               <div className="form-group">
                 <label htmlFor="email">Email address</label>
@@ -186,6 +209,9 @@ function Signup() {
                 <input type="text" className="form-control" name="profilePicURL" id="profilePicURL" onChange={handleChange} placeholder="Paste the url of Profile Pic" />
                 {!profilePicURL || <img src={profilePicURL} className="img-sm" />}
                 {/* <input type="file" class="form-control-file" name="profilePic" id="profilePic" onChange={handleChange} aria-describedby="fileHelp" /> */}
+              </div>
+              <div id='photo-from-container'>
+                <button onClick={showWidget}>Upload Photo</button>
               </div>
               <button type="submit" className="btn btn-primary">Sign Up</button>
             </fieldset>
