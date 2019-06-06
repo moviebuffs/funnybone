@@ -62,5 +62,6 @@ connection.sync({ force: false })
 module.exports.connection = connection;
 module.exports.Messages = Messages;
 module.exports.Users = Users;
+module.exports.Interests = Interests;
 module.exports.UsersInterests = UsersInterests;
 

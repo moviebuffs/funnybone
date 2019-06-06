@@ -9,6 +9,7 @@ const userRoute = require('./routes/user-route');
 const messageRoute = require('./routes/message-route');
 const contentRoute = require('./routes/content-route');
 const { loginRoute, passport } = require('./routes/login-route');
+const interestsRoute = require("./routes/interests-route")
 
 const app = express();
 // MIDDLEWARE
@@ -62,6 +63,7 @@ app.use('/api/user', userRoute);
 app.use('/api/message', messageRoute);
 app.use('/api/content', contentRoute);
 app.use('/login', loginRoute);
+app.use('/interests', interestsRoute);
 
 
 const PORT = process.env.PORT || 8080;

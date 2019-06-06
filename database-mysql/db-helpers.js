@@ -54,7 +54,7 @@ const saveMessage = message => Messages.create(message);
 //  saveMessage(dummyMessages[4]);
 
 // find the id of a given interests by its name in the database
-const findInterestsId = intName => Interests.findAll({ where: { name: intName } }).then(int => int.id)
+const findInterestsId = intName => Interests.findOne({ where: { name: intName } }).then(int => int.id)
 
 // pulls User id from user in database by their email
 const findUserId = email => Users.findOne({ where: { email } }).then(user => user.id);
@@ -69,7 +69,7 @@ const storeUsersInterests = (userDbId, intDbId) =>
 // store unique values of Interests
 const storeInterests = intName => Interests.findOrCreate({ where: { name: intName }, defaults: { name: intName } })
 
-const pullUsersFromInterests = intDbId => 
+const pullUsersFromInterests = intDbId => // refactor to take in array of interest Ids
   UsersInterests.findAll({ // find all userId's stored on join table tied to given interest id
     attributes: ['userId'],
     where: { interestId: intDbId },
@@ -95,4 +95,6 @@ module.exports.findInterestsId = findInterestsId;
 module.exports.findUserId = findUserId;
 module.exports.pullUsersFromInterests = pullUsersFromInterests;
 module.exports.findAllUsers = findAllUsers;
+
+
 
