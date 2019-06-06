@@ -2,6 +2,12 @@ import React, { useState } from 'react';
 import ReactDOM from 'react-dom';
 import Header from './components/header.jsx';
 
+{/* <div className="form-group">
+  <label htmlFor="profilePicUpload">Upload A Profile Picture</label>
+  <input type="text" className="form-control" name="profilePicURL" id="profilePicURL" onChange={handleChange} placeholder="Paste the url of Profile Pic" />
+  {!profilePicURL || <img src={profilePicURL} className="img-sm" />}
+  {/* <input type="file" class="form-control-file" name="profilePic" id="profilePic" onChange={handleChange} aria-describedby="fileHelp" /> */}
+// </div> */}
 
 function Signup() {
   const [username, setUsername] = useState('');
@@ -10,7 +16,7 @@ function Signup() {
   const [password, setPassword] = useState('');
   const [bio, setBio] = useState('');
   const [profilePicURL, setProfilePicURL] = useState('');
-  
+  const [humor, setHumor] = useState([]);
   
   // object containing set functions for all states
   // key for all === state trying to set
@@ -22,15 +28,14 @@ function Signup() {
     password: setPassword,
     bio: setBio,
     profilePicURL: setProfilePicURL,
-    
+    humor: setHumor,
   };
 
 
   // storeUsername
   function handleChange(e) {
-    const { name, value } = e.target;
-    set[name](value);
-    // console.log(e.target.value);
+    const { name, value, type, checked } = e.target;
+    type === 'checkbox' ? set[name](type => type.concat(value)) : set[name](value);
   }
 
   
@@ -95,6 +100,110 @@ function Signup() {
                 <label htmlFor="profileBio">Bio</label>
                 <textarea maxLength="499" className="form-control" name="bio" id="bio" onChange={handleChange} rows="3" placeholder="Talk about your interest!" />
               </div>
+              {/* <div className="form-group">
+                <label>
+                  Select your favorite type of humor:
+                  <select onChange={handleChange} name="humor" id="humor" >
+                    <option value="observational">Observational</option>
+                    <option value="slapstick">Slapstick</option>
+                    <option value="sarcastic">Sarcastic</option>
+                    <option value="dry">Dry</option>
+                    <option value="dark">Dark</option>
+                    <option value="juvenile">Juvenile</option>
+                    <option value="cringey">Cringey</option>
+                    <option value="surreal">Surreal</option>
+                    <option value="wordplay">Wit-Wordplay (Puns)</option>
+                    <option value="satirical">Satirical</option>
+                  </select>
+                </label>
+              </div> */}
+              <div className="form-group">
+                <label>
+                  Observational:
+                  <input
+                    name="humor"
+                    value="observational"
+                    type="checkbox"
+                    onChange={handleChange} />
+                </label>
+                <label>
+                  Slapstick:
+                  <input
+                    name="humor"
+                    value="slapstick"
+                    type="checkbox"
+                    onChange={handleChange} />
+                </label>
+                <br />
+                <label>
+                  Sarcastic:
+                  <input
+                    name="humor"
+                    value="sarcastic"
+                    type="checkbox"
+                    onChange={handleChange} />
+                </label>
+                <label>
+                  Dry:
+                  <input
+                    name="humor"
+                    value="dry"
+                    type="checkbox"
+                    onChange={handleChange} />
+                </label>
+                <br />
+                <label>
+                  Dark:
+                  <input
+                    name="humor"
+                    value="dark"
+                    type="checkbox"
+                    onChange={handleChange} />
+                </label>
+                <label>
+                  Juvenile:
+                  <input
+                    name="humor"
+                    value="juvenile"
+                    type="checkbox"
+                    onChange={handleChange} />
+                </label>
+                <br />
+                <label>
+                  Cringey:
+                  <input
+                    name="humor"
+                    value="cringey"
+                    type="checkbox"
+                    onChange={handleChange} />
+                </label>
+                <label>
+                  Surreal:
+                  <input
+                    name="humor"
+                    value="surreal"
+                    type="checkbox"
+                    onChange={handleChange} />
+                </label>
+                <br />
+                <label>
+                  Wit-Wordplay (Puns):
+                  <input
+                    name="humor"
+                    value="wordplay"
+                    type="checkbox"
+                    onChange={handleChange} />
+                </label>
+                <label>
+                  Satirical:
+                  <input
+                    name="humor"
+                    value="satirical"
+                    type="checkbox"
+                    onChange={handleChange} />
+                </label>
+                <br />
+              </div>
               <div className="form-group">
                 <label htmlFor="profilePicUpload">Upload A Profile Picture</label>
                 <input type="text" className="form-control" name="profilePicURL" id="profilePicURL" onChange={handleChange} placeholder="Paste the url of Profile Pic" />
@@ -119,7 +228,7 @@ function Signup() {
               <div className="form-group">
                 <label htmlFor="exampleInputPassword1">Password</label>
                 <input type="password" className="form-control" name="password" id="password" onChange={handleChange} placeholder="Password" />
-                <small id="passwordHelp" className="form-text text-muted">What Do You Call A Cow In A Earthquake... A Milkshake ;)</small>
+                <small id="passwordHelp" className="form-text text-muted">What Do You Call A Cow In An Earthquake... A Milkshake ;)</small>
               </div>
               <button type="submit" name="Login" className="btn btn-primary">Login</button>
             </fieldset>
