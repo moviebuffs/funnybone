@@ -1,9 +1,11 @@
 /* eslint-disable import/extensions */
 import React from 'react';
+import axios from 'axios';
 import UserThumbPreview from './user-thumb-preview.jsx';
 import Profile from './profile.jsx';
 import Inbox from './inbox.jsx';
 import MessageComposer from './message-composer.jsx';
+import Match from './match.jsx';
 
 //See MainViewHeader and MainViewBody below
 export function MainView(props) {
@@ -43,6 +45,7 @@ export function MainViewHeader(props) {
       <button className="btn btn-sm btn-primary" data-target="browse" onClick={handleClick}>browse</button>
       <h4>{view}</h4>
       <button className="btn btn-sm btn-primary" data-target="inbox" onClick={handleClick}>inbox</button>
+      <button className="btn btn-sm btn-primary" data-target="match" onClick={handleClick}>Find a Match!</button>
     </div>
   );
 }
@@ -67,6 +70,11 @@ export function MainViewBody(props) {
   if (view === 'inbox') {
     return (
       <Inbox user={user} allUsers={allUsers} changeView={changeView} />
+    );
+  }
+  if (view === 'match') {
+    return (
+      <Match user={user} allUsers={allUsers} changeView={changeView} />
     );
   }
   // Browse
