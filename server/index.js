@@ -72,16 +72,16 @@ app.use('/interests', interestsRoute);
 
 
 const PORT = process.env.PORT || 8080;
-const socket = new WebSocket('ws://localhost:8080');
+// const socket = new WebSocket('ws://localhost:8080');
 
 
 app.listen(PORT, () => { console.log(`listening on port ${PORT}`); });
 
-socket.addEventListener('open', function (event) {
-  socket.send('Hello Server!');
-});
+// socket.addEventListener('open', function (event) {
+//   socket.send('Hello Server!');
+// });
 
-// Listen for messages
-socket.addEventListener('message', function (event) {
-  console.log('Message from server ', event.data);
-});
+// // Listen for messages
+// socket.addEventListener('message', function (event) {
+//   console.log('Message from server ', event.data);
+// });

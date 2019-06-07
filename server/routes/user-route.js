@@ -25,20 +25,6 @@ router.get('/', (req, res) => {
 router.post('/', (req, res) => {
   // res.send('POST handler for /api/user route.');
   const user = req.body;
-<<<<<<< HEAD
-  console.log(user);
-  helpers
-    .saveUser(user)
-    .then((savedUser) => {
-      req.login(savedUser, (err) => {
-        if (err) res.sendStatus(404);
-        else res.redirect('/');
-      });
-    })
-    .catch((err) => {
-      console.error(err);
-      res.redirect('/login');
-=======
   const { displayName, username, email, bio, password, profilePicURL, interests } = req.body;
 
   Promise.all(interests.map(int => helpers.storeInterests(int))) // store interests in database
@@ -63,7 +49,6 @@ router.post('/', (req, res) => {
     req.login(savedUser, (err) => {
       if (err) res.sendStatus(404);
       else res.redirect('/');
->>>>>>> ae8430d6a613ad04d4b4592e623ce15e594fbe79
     });
   })
   .catch(() => res.redirect('/login'));
