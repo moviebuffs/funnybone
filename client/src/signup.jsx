@@ -35,9 +35,17 @@ function Signup() {
   // storeUsername
   function handleChange(e) {
     const { name, value, type, checked } = e.target;
-    type === 'checkbox' ? set[name](type => type.concat(value)) : set[name](value);
+    if (type === 'checkbox') {
+      if (checked) {
+        set[name](interests => interests.concat(value));
+        // set[name]('hi');
+      } else {
+        set[name](interests => interests.filter((interest) => interest !== value));
+      }
+    } else {
+      set[name](value);
+    }
   }
-
   
   function checkUploadResult(resultEvent) {
    if (resultEvent.event === 'success') {
