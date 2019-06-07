@@ -16,7 +16,7 @@ function Signup() {
   const [password, setPassword] = useState('');
   const [bio, setBio] = useState('');
   const [profilePicURL, setProfilePicURL] = useState('');
-  const [humor, setHumor] = useState([]);
+  const [interests, setInterests] = useState([]);
   
   // object containing set functions for all states
   // key for all === state trying to set
@@ -28,7 +28,7 @@ function Signup() {
     password: setPassword,
     bio: setBio,
     profilePicURL: setProfilePicURL,
-    humor: setHumor,
+    interests: setInterests,
   };
 
 
@@ -36,6 +36,28 @@ function Signup() {
   function handleChange(e) {
     const { name, value, type, checked } = e.target;
     type === 'checkbox' ? set[name](type => type.concat(value)) : set[name](value);
+  }
+
+  
+  function checkUploadResult(resultEvent) {
+   if (resultEvent.event === 'success') {
+    console.log(resultEvent); 
+    console.log(username);
+    set.profilePicURL(resultEvent.info.thumbnail_url);
+     
+     
+   }
+ }
+  
+  function showWidget() {
+    event.preventDefault()
+    let widget = window.cloudinary.openUploadWidget({
+      cloudName: "df4keaubv",
+      uploadPreset: "pch5wvc7",
+    }, (error, result) => { checkUploadResult(result) });
+    
+    // widget.open() is currently not a function
+    //widget.open()
   }
 
   return (
@@ -62,7 +84,7 @@ function Signup() {
               </div>
               <div className="form-group">
                 <label htmlFor="name">Display Name</label>
-                <input type="text" className="form-control" name="displayName" id="displayName" onChange={handleChange} placeholder="Enter your Display Name" />
+                <input type="text" className="form-control" name="displayName" id="name" onChange={handleChange} placeholder="Enter your Display Name" />
               </div>
               <div className="form-group">
                 <label htmlFor="email">Email address</label>
@@ -79,8 +101,8 @@ function Signup() {
               </div>
               {/* <div className="form-group">
                 <label>
-                  Select your favorite type of humor:
-                  <select onChange={handleChange} name="humor" id="humor" >
+                  Select your favorite type of interests:
+                  <select onChange={handleChange} name="interests" id="interests" >
                     <option value="observational">Observational</option>
                     <option value="slapstick">Slapstick</option>
                     <option value="sarcastic">Sarcastic</option>
@@ -98,7 +120,7 @@ function Signup() {
                 <label>
                   Observational:
                   <input
-                    name="humor"
+                    name="interests"
                     value="observational"
                     type="checkbox"
                     onChange={handleChange} />
@@ -106,7 +128,7 @@ function Signup() {
                 <label>
                   Slapstick:
                   <input
-                    name="humor"
+                    name="interests"
                     value="slapstick"
                     type="checkbox"
                     onChange={handleChange} />
@@ -115,7 +137,7 @@ function Signup() {
                 <label>
                   Sarcastic:
                   <input
-                    name="humor"
+                    name="interests"
                     value="sarcastic"
                     type="checkbox"
                     onChange={handleChange} />
@@ -123,7 +145,7 @@ function Signup() {
                 <label>
                   Dry:
                   <input
-                    name="humor"
+                    name="interests"
                     value="dry"
                     type="checkbox"
                     onChange={handleChange} />
@@ -132,7 +154,7 @@ function Signup() {
                 <label>
                   Dark:
                   <input
-                    name="humor"
+                    name="interests"
                     value="dark"
                     type="checkbox"
                     onChange={handleChange} />
@@ -140,7 +162,7 @@ function Signup() {
                 <label>
                   Juvenile:
                   <input
-                    name="humor"
+                    name="interests"
                     value="juvenile"
                     type="checkbox"
                     onChange={handleChange} />
@@ -149,7 +171,7 @@ function Signup() {
                 <label>
                   Cringey:
                   <input
-                    name="humor"
+                    name="interests"
                     value="cringey"
                     type="checkbox"
                     onChange={handleChange} />
@@ -157,7 +179,7 @@ function Signup() {
                 <label>
                   Surreal:
                   <input
-                    name="humor"
+                    name="interests"
                     value="surreal"
                     type="checkbox"
                     onChange={handleChange} />
@@ -166,7 +188,7 @@ function Signup() {
                 <label>
                   Wit-Wordplay (Puns):
                   <input
-                    name="humor"
+                    name="interests"
                     value="wordplay"
                     type="checkbox"
                     onChange={handleChange} />
@@ -174,7 +196,7 @@ function Signup() {
                 <label>
                   Satirical:
                   <input
-                    name="humor"
+                    name="interests"
                     value="satirical"
                     type="checkbox"
                     onChange={handleChange} />
@@ -183,9 +205,12 @@ function Signup() {
               </div>
               <div className="form-group">
                 <label htmlFor="profilePicUpload">Upload A Profile Picture</label>
-                <input type="text" className="form-control" name="profilePicURL" id="profilePicURL" onChange={handleChange} placeholder="Paste the url of Profile Pic" />
+                <input type="text" className="form-control" name="profilePicURL" value={profilePicURL} id="profilePicURL" onChange={handleChange} placeholder="Paste the url of Profile Pic" />
                 {!profilePicURL || <img src={profilePicURL} className="img-sm" />}
                 {/* <input type="file" class="form-control-file" name="profilePic" id="profilePic" onChange={handleChange} aria-describedby="fileHelp" /> */}
+              </div>
+              <div id='photo-from-container'>
+                <button onClick={showWidget}>Upload Photo</button>
               </div>
               <button type="submit" className="btn btn-primary">Sign Up</button>
             </fieldset>
