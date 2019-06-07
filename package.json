@@ -19,7 +19,8 @@
     "passport-local": "^1.0.0",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
-    "sequelize": "^5.8.7"
+    "sequelize": "^5.8.7",
+    "ws": "^7.0.0"
   },
   "devDependencies": {
     "@babel/core": "^7.4.5",

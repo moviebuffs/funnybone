@@ -17,7 +17,7 @@ const connection = new Sequelize(database, user, password, {
 });
 
 const Users = connection.define('users', {
-  name: {
+  displayName: {
     type: Sequelize.STRING,
     allowNull: false,
   },
@@ -51,7 +51,7 @@ const UsersInterests = connection.define('users_interests', {}); // create join 
 UsersInterests.belongsTo(Users); // define join table relationship to Users
 UsersInterests.belongsTo(Interests); // define join table relationship to Interests
 
-connection.sync({ force: false })
+connection.sync({ force: true })
   .then((result) => {
     console.log(result, 'connected to', database);
   })

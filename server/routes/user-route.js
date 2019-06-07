@@ -25,6 +25,7 @@ router.get('/', (req, res) => {
 router.post('/', (req, res) => {
   // res.send('POST handler for /api/user route.');
   const user = req.body;
+  console.log(user);
   helpers
     .saveUser(user)
     .then((savedUser) => {
@@ -33,7 +34,8 @@ router.post('/', (req, res) => {
         else res.redirect('/');
       });
     })
-    .catch(() => {
+    .catch((err) => {
+      console.error(err);
       res.redirect('/login');
     });
 });
