@@ -16,7 +16,7 @@ function Signup() {
   const [password, setPassword] = useState('');
   const [bio, setBio] = useState('');
   const [profilePicURL, setProfilePicURL] = useState('');
-  const [humor, setHumor] = useState([]);
+  const [interests, setInterests] = useState([]);
   
   // object containing set functions for all states
   // key for all === state trying to set
@@ -28,7 +28,7 @@ function Signup() {
     password: setPassword,
     bio: setBio,
     profilePicURL: setProfilePicURL,
-    humor: setHumor,
+    interests: setInterests,
   };
 
 
@@ -77,28 +77,11 @@ function Signup() {
                 <label htmlFor="profileBio">Bio</label>
                 <textarea maxLength="499" className="form-control" name="bio" id="bio" onChange={handleChange} rows="3" placeholder="Talk about your interest!" />
               </div>
-              {/* <div className="form-group">
-                <label>
-                  Select your favorite type of humor:
-                  <select onChange={handleChange} name="humor" id="humor" >
-                    <option value="observational">Observational</option>
-                    <option value="slapstick">Slapstick</option>
-                    <option value="sarcastic">Sarcastic</option>
-                    <option value="dry">Dry</option>
-                    <option value="dark">Dark</option>
-                    <option value="juvenile">Juvenile</option>
-                    <option value="cringey">Cringey</option>
-                    <option value="surreal">Surreal</option>
-                    <option value="wordplay">Wit-Wordplay (Puns)</option>
-                    <option value="satirical">Satirical</option>
-                  </select>
-                </label>
-              </div> */}
               <div className="form-group">
                 <label>
                   Observational:
                   <input
-                    name="humor"
+                    name="interests"
                     value="observational"
                     type="checkbox"
                     onChange={handleChange} />
@@ -106,7 +89,7 @@ function Signup() {
                 <label>
                   Slapstick:
                   <input
-                    name="humor"
+                    name="interests"
                     value="slapstick"
                     type="checkbox"
                     onChange={handleChange} />
@@ -115,7 +98,7 @@ function Signup() {
                 <label>
                   Sarcastic:
                   <input
-                    name="humor"
+                    name="interests"
                     value="sarcastic"
                     type="checkbox"
                     onChange={handleChange} />
@@ -123,7 +106,7 @@ function Signup() {
                 <label>
                   Dry:
                   <input
-                    name="humor"
+                    name="interests"
                     value="dry"
                     type="checkbox"
                     onChange={handleChange} />
@@ -132,7 +115,7 @@ function Signup() {
                 <label>
                   Dark:
                   <input
-                    name="humor"
+                    name="interests"
                     value="dark"
                     type="checkbox"
                     onChange={handleChange} />
@@ -140,7 +123,7 @@ function Signup() {
                 <label>
                   Juvenile:
                   <input
-                    name="humor"
+                    name="interests"
                     value="juvenile"
                     type="checkbox"
                     onChange={handleChange} />
@@ -149,7 +132,7 @@ function Signup() {
                 <label>
                   Cringey:
                   <input
-                    name="humor"
+                    name="interests"
                     value="cringey"
                     type="checkbox"
                     onChange={handleChange} />
@@ -157,7 +140,7 @@ function Signup() {
                 <label>
                   Surreal:
                   <input
-                    name="humor"
+                    name="interests"
                     value="surreal"
                     type="checkbox"
                     onChange={handleChange} />
@@ -166,7 +149,7 @@ function Signup() {
                 <label>
                   Wit-Wordplay (Puns):
                   <input
-                    name="humor"
+                    name="interests"
                     value="wordplay"
                     type="checkbox"
                     onChange={handleChange} />
@@ -174,7 +157,7 @@ function Signup() {
                 <label>
                   Satirical:
                   <input
-                    name="humor"
+                    name="interests"
                     value="satirical"
                     type="checkbox"
                     onChange={handleChange} />
