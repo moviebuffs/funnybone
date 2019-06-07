@@ -44,7 +44,7 @@ const getInbox = userId => Messages.findAll({
 
 // SORT BY:
 // createAt (most recent first)
-const saveUser = user => Users.create(user);
+const saveUser = user => Users.findOrCreate({ where: { displayName: user.displayName }, defaults: { ...user } }, );
 
 
 const saveMessage = message => Messages.create(message);

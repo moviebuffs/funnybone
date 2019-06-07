@@ -51,8 +51,7 @@ function Signup() {
    if (resultEvent.event === 'success') {
     console.log(resultEvent); 
     console.log(username);
-
-      set.profilePicURL(resultEvent.info.thumbnail_url);
+    set.profilePicURL(resultEvent.info.thumbnail_url);
      
      
    }
@@ -214,7 +213,7 @@ function Signup() {
               </div>
               <div className="form-group">
                 <label htmlFor="profilePicUpload">Upload A Profile Picture</label>
-                <input type="text" className="form-control" name="profilePicURL" id="profilePicURL" onChange={handleChange} placeholder="Paste the url of Profile Pic" />
+                <input type="text" className="form-control" name="profilePicURL" value={profilePicURL} id="profilePicURL" onChange={handleChange} placeholder="Paste the url of Profile Pic" />
                 {!profilePicURL || <img src={profilePicURL} className="img-sm" />}
                 {/* <input type="file" class="form-control-file" name="profilePic" id="profilePic" onChange={handleChange} aria-describedby="fileHelp" /> */}
               </div>
