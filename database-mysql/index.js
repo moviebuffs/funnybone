@@ -17,7 +17,7 @@ const connection = new Sequelize(database, user, password, {
 });
 
 const Users = connection.define('users', {
-  name: {
+  displayName: {
     type: Sequelize.STRING,
     allowNull: false,
   },
