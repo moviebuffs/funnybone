@@ -22,10 +22,14 @@ router.post('/pull', (req, res) => {
   Promise.all(interests.map(int => findInterestsId(int))) // find interest ids that match names
     .then(intIdArr => Promise.all(intIdArr.map(intId => pullUsersFromInterests(intId))))
     .then(userIdData => {
+      console.log(userIdData);
       const userIds = userIdData[0].map(userModel => userModel.userId).filter((id, ind, arr) => arr.indexOf(id) >= ind) // filter unique userIds
       return findAllUsers(userIds)
     })
-    .then(userNameData => res.send(userNameData))
+    .then(userNameData => {
+      console.log(userNameData);
+      res.send(userNameData)
+    })
     .catch(error => console.log("Could not store data in the join table", error));
 })
     
