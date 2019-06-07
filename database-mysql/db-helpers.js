@@ -4,7 +4,8 @@ const Sequelize = require('sequelize');
 
 const { Op } = Sequelize;
 
-const getUsers = user => Users.findAll({ where: { id: { [Op.ne]: user.id } } }).then(results => ({ user, allUsers: results }));
+const getUsers = user => Users.findAll({ where: { id: { [Op.ne]: user.id } } })
+                              .then(results => ({ user, allUsers: results }));
 
 // getUsers();
 // helper to get all message from a user based on userId
