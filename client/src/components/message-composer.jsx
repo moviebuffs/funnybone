@@ -1,10 +1,18 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-
+import toaster from 'toasted-notes';
+import io from 'socket.io-client';
+let socket = io(`http://localhost:8080`);
 /**
  * Message Composer is the DM view, it renders the message history
  * and the box at the bottom to send messages
  */
+
+const HelloWorld = () => {
+  toaster.notify('Message Sent', {
+      duration: 2000
+    })
+  }
 
 function MessageComposer(props) {
   const {
@@ -37,6 +45,7 @@ function MessageComposer(props) {
         fromId: user.id,
         toId: mainViewUser.id,
       };
+    socket.emit('send message', message.content);
       axios.post('/api/message', message).then(() => {
         fetchConvo();
       }).catch(() => {
@@ -87,6 +96,7 @@ function MessageComposer(props) {
           <form className="col-md-8">
             <textarea className="form-control mb-2" type="text" placeholder={placeholder} value={inputText} onChange={e => setInputText(e.target.value)} />
             <button id="text" type="button" className="btn btn-warning flex-shrink-1" onClick={sendMessage}>send</button>
+            
           </form>
           <div className="col-md-3 p-0 overflow-hidden">
             {!selectedContent.src ? <h4>add a GIF or vid</h4> : null}

@@ -32,7 +32,7 @@ function Signup() {
   };
 
 
-  // storeUsername
+  // storeUsername // put socket here to send back username on change?
   function handleChange(e) {
     const { name, value, type, checked } = e.target;
     type === 'checkbox' ? set[name](type => type.concat(value)) : set[name](value);
@@ -55,11 +55,9 @@ function Signup() {
       cloudName: "df4keaubv",
       uploadPreset: "pch5wvc7",
     }, (error, result) => { checkUploadResult(result) });
-    
-    // widget.open() is currently not a function
-    //widget.open()
-  }
-
+}
+  
+ 
   return (
     <div className="container">
       <Header />
@@ -212,12 +210,12 @@ function Signup() {
               <div id='photo-from-container'>
                 <button onClick={showWidget}>Upload Photo</button>
               </div>
-              <button type="submit" className="btn btn-primary">Sign Up</button>
+                <button type="submit" className="btn btn-primary">Sign Up</button>
             </fieldset>
           </form>
         </div>
         <div className="tab-pane active" id="login">
-          <form action="/login" method="post">
+          <form action="/login" method="post" >
             <fieldset>
               <legend className="text-center"><h2>Login to Funny Bone</h2></legend>
               <div className="form-group">
@@ -229,7 +227,13 @@ function Signup() {
                 <input type="password" className="form-control" name="password" id="password" onChange={handleChange} placeholder="Password" />
                 <small id="passwordHelp" className="form-text text-muted">What Do You Call A Cow In An Earthquake... A Milkshake ;)</small>
               </div>
-              <button type="submit" name="Login" className="btn btn-primary">Login</button>
+              <div className="radio">
+                <label>
+                  <input type="checkbox" name="online" />
+                  Show online
+                </label>
+              </div>
+              <button type="submit" name="Login" className="btn btn-primary" >Login</button>
             </fieldset>
           </form>
         </div>
