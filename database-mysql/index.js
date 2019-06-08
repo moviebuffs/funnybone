@@ -14,6 +14,7 @@ const connection = new Sequelize(database, user, password, {
   dialect: 'mysql',
   host,
   port,
+  logging: false,
 });
 
 const Users = connection.define('users', {
