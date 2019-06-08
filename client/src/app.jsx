@@ -5,6 +5,7 @@ import UserSidebarInfo from './components/user-sidebar-info.jsx';
 import SearchSideBar from './components/search-sidebar.jsx';
 import { MainView } from './components/main-view.jsx';
 import Header from './components/header.jsx';
+import openSocket from 'socket.io-client';
 
 /**
  * Main App (3 components)
@@ -15,18 +16,20 @@ import Header from './components/header.jsx';
  */
 
 function App() {
-
+  
   /**
    * useState hooks into state it returns and array with 2 items
    * the first is the variable in the state and the second is the function
    * to change like setState
    */
+  let socket;
   const [allUsers, setAllUsers] = useState([]);
   const [user, setUser] = useState({ interests: [] });
   const [view, setView] = useState('browse');
   const [mainViewUser, setMainViewUser] = useState(null);
   const [selectedContent, setSelectedContent] = useState({});
-
+  const [onlineUsers, setOnlineUsers] = useState([]);
+  
   /**
    * useEffect hooks in componentDidMount and DidUpdate
    * the second argument is what's used to check and what's changed
@@ -40,7 +43,15 @@ function App() {
         setUser(resUser);
       }
     });
+    
   }, [allUsers.length]);
+
+  useEffect(() => {
+  socket = openSocket('ws://localhost:3000');
+  socket.on('online users', function(data){
+    console.log(data);
+  })
+  }, [])
 
   // Selected Content is the GIF or Vid the user chose from the search bar
   function changeSelectedContent(src, vidId) {
@@ -52,6 +63,16 @@ function App() {
     setView(newView);
     setMainViewUser(newMainViewUser);
   }
+
+  // socket.on('get users', function (data) {
+  //   let html = '';
+  //   for (let i = 0; i < data.length; i++) {
+  //     html += data[i];
+  //   }
+  //   console.log(html);
+  // })
+
+  //socket.on('connection', function(data){})
 
   return (
     <div className="container">

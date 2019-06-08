@@ -1,5 +1,7 @@
 const express = require('express');
-
+// const io = require('socket.io-client');
+// const socket = io.connect();
+const { io } = require('../index');
 const router = express.Router();
 const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
@@ -41,15 +43,11 @@ passport.deserializeUser((id, done) => {
 router.get('/', (req, res) => {
   res.send('This is the login page');
 });
-
+let onlineUsers = [];
 /**
  * This route redirects you to the login page on a failed password
  */
-router.post('/',
-  passport.authenticate('local', { failureRedirect: '/login' }),
-  (req, res) => {
-    res.redirect('/');
-  });
 
 
-module.exports = { loginRoute: router, passport };
+
+module.exports = { loginRoute: router, passport, onlineUsers };
