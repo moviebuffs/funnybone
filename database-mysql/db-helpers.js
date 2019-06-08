@@ -44,7 +44,7 @@ const getInbox = userId => Messages.findAll({
 
 // SORT BY:
 // createAt (most recent first)
-const saveUser = user => Users.create(user);
+const saveUser = user => Users.findOrCreate({ where: { displayName: user.displayName }, defaults: { ...user } }, );
 
 
 const saveMessage = message => Messages.create(message);
@@ -56,6 +56,13 @@ const saveMessage = message => Messages.create(message);
 
 // find the id of a given interests by its name in the database
 const findInterestsId = intName => Interests.findOne({ where: { name: intName } }).then(int => int.id)
+
+const findInterestIdsForOneUSer = userDbId => UsersInterests.findAll({
+  attributes: ["interestId"],
+  where : {
+    userId: userDbId,
+  }
+});
 
 // pulls User id from user in database by their email
 const findUserId = email => Users.findOne({ where: { email } }).then(user => user.id);
@@ -85,6 +92,15 @@ const findAllUsers = userDbIdArr =>
     },
   });
 
+const findAllInterests = intDbIdArr => 
+  Interests.findAll({ // find all Users that match the given id's in the userDbIdArr
+    where: {
+      id: {
+        [Op.or]: intDbIdArr,
+      },
+    },
+  });
+
 module.exports.getUsers = getUsers;
 module.exports.getConversation = getConversation;
 module.exports.saveMessage = saveMessage;
@@ -96,6 +112,8 @@ module.exports.findInterestsId = findInterestsId;
 module.exports.findUserId = findUserId;
 module.exports.pullUsersFromInterests = pullUsersFromInterests;
 module.exports.findAllUsers = findAllUsers;
+module.exports.findInterestIdsForOneUSer = findInterestIdsForOneUSer;
+module.exports.findAllInterests = findAllInterests;
 
 
 

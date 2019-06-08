@@ -10,6 +10,11 @@ const messageRoute = require('./routes/message-route');
 const contentRoute = require('./routes/content-route');
 const { loginRoute, passport, onlineUsers } = require('./routes/login-route');
 const interestsRoute = require("./routes/interests-route");
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> e2fc3f0efe43114d0e3b00b3f68786025244cd26
 const app = express();
 const http = require('http').Server(app)
 const io = require('socket.io')(http);
