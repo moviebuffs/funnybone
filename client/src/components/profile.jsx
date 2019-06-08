@@ -21,7 +21,7 @@ function Profile(props) {
       <div className="">
         <img className="img-thumbnail img-lg" src={profilePicURL} alt="" />
 
-        <h3>{name}</h3>
+        <h3>{displayName}</h3>
         <button data-target="dm" type="button" className="btn btn-success" onClick={handleClick}>
           slide into {displayName}'s DM
         </button>

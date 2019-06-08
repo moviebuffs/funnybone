@@ -3,7 +3,7 @@ import axios from 'axios';
 
 // props is the user data
 function UserSidebarInfo(props) {
-  const { name, profilePicURL, bio } = props.user;
+  const { displayName, profilePicURL, bio } = props.user;
   const [jokeOfTheDay, setJokeOfTheDay] = useState('');
 
   useEffect(() => {
@@ -17,7 +17,7 @@ function UserSidebarInfo(props) {
     <div className="d-flex flex-column  align-items-end">
       <div className="">
         <img id="user-profile-pic" className="img-thumbnail img-md" src={profilePicURL} />
-        <h3>{name}</h3>
+        <h3>{displayName}</h3>
         <div className="my-2">{bio}</div>
       </div>
       <div className="text-success">
