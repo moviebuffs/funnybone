@@ -48,7 +48,7 @@ function Convo(props) {
   return (
     <div className="d-flex flex-row mb-2" onClick={handleClick} id={user.id}>
       <img className="img-xxs mx-2 rounded shadow" src={user.profilePicURL} id={user.id} />
-      <h4 className="text-info" id={user.id}>{user.name}</h4>
+      <h4 className="text-info" id={user.id}>{user.displayName}</h4>
     </div>
   );
 }

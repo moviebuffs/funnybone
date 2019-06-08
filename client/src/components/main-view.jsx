@@ -75,7 +75,7 @@ export function MainViewBody(props) {
           .catch(err => console.error(err));
       })
       .catch(err => console.error(err));
-  });
+  }, [ user ]);
 
   if (view === 'profile') {
     return (
