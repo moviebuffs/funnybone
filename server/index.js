@@ -10,7 +10,7 @@ const messageRoute = require('./routes/message-route');
 const contentRoute = require('./routes/content-route');
 const { loginRoute, passport } = require('./routes/login-route');
 const interestsRoute = require("./routes/interests-route");
-const WebSocket = require('ws');
+
 
 const app = express();
 // MIDDLEWARE

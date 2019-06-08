@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const { findAllUsers, pullUsersFromInterests, findInterestsId } = require('../../database-mysql/db-helpers');
 
-// const { storeUsersInterests, findUserId, storeInterests } = require('../../database-mysql/db-helpers');
+const { storeUsersInterests, findUserId, storeInterests, findInterestIdsForOneUSer, findAllInterests } = require('../../database-mysql/db-helpers');
 
 // router.post('/store', (req, res) => {
 //   const { interests, email } = req.body;
@@ -18,6 +18,18 @@ const { findAllUsers, pullUsersFromInterests, findInterestsId } = require('../..
 //     .then(() => res.send(201))
 //     .catch(error => console.error(error, "Something went wrong"));
 // })
+
+router.post('/user', (req, res) => {
+  const { email } = req.body;
+  findUserId(email)
+    .then(userDbId => findInterestIdsForOneUSer(userDbId))
+    .then(intModelArr => {
+      const intIdArr = intModelArr.map(intObj => intObj.interestId)
+      return findAllInterests(intIdArr);
+    })
+    .then(interests => res.send(interests))
+    .catch(error => console.error("You have an error", error))
+})
 
 router.post('/pull', (req, res) => {
   const { interests } = req.body;
