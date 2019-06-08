@@ -5,7 +5,7 @@ import React from 'react';
 function Profile(props) {
   const { mainViewUser, changeView } = props;
   const {
-    username, name, profilePicURL, interests, bio,
+    username, displayName, profilePicURL, interests, bio,
   } = mainViewUser;
 
   function handleClick(e) {
@@ -23,7 +23,7 @@ function Profile(props) {
 
         <h3>{name}</h3>
         <button data-target="dm" type="button" className="btn btn-success" onClick={handleClick}>
-          slide into {name}'s DM
+          slide into {displayName}'s DM
         </button>
         <div className="mt-2">{bio}</div>
       </div>
