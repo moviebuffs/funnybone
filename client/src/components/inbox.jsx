@@ -55,7 +55,7 @@ function Convo(props) {
 
 Inbox.propTypes = {
   user: PropTypes.shape({
-    name: PropTypes.string,
+    displayName: PropTypes.string,
     username: PropTypes.string,
     bio: PropTypes.string,
     id: PropTypes.number,
@@ -68,7 +68,7 @@ Inbox.propTypes = {
 
 Convo.propTypes = {
   user: PropTypes.shape({
-    name: PropTypes.string,
+    displayName: PropTypes.string,
     username: PropTypes.string,
     bio: PropTypes.string,
     id: PropTypes.number,

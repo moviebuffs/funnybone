@@ -81,7 +81,7 @@ function MessageComposer(props) {
           <img className="img-xs rounded mr-3" data-target="profile" onClick={handleClick} src={mainViewUser.profilePicURL} />
           <div data-target="profile" onClick={handleClick}>
             <h4>
-              {mainViewUser.name}
+              {mainViewUser.displayName}
             </h4>
           </div>
         </div>
