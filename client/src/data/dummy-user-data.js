@@ -2,7 +2,7 @@ module.exports = [
   {
     id: 3,
     username: 'joeyjojo',
-    name: 'Joey Jo Jo',
+    displayName: 'Joey Jo Jo',
     email: 'joey@jojo.com',
     // interests: [
     //   'Dave Chappelle',
@@ -16,7 +16,7 @@ module.exports = [
   {
     id: 7,
     username: 'samantha',
-    name: 'Samantha Bigglesby',
+    displayName: 'Samantha Bigglesby',
     email: 'samantha@sam.com',
     // interests: [
     //   'Tiffany Haddish',
@@ -29,7 +29,7 @@ module.exports = [
   {
     id: 9,
     username: 'alison',
-    name: 'Alison somebody',
+    displayName: 'Alison somebody',
     email: 'al@sombody.com',
     // interests: [
     //   'Space Balls',
@@ -42,7 +42,7 @@ module.exports = [
   {
     id: 15,
     username: 'drake',
-    name: 'Drake Tinyhat',
+    displayName: 'Drake Tinyhat',
     email: 'drake@drake.com',
     // interests: [
     //   'Tiffany Haddish',
@@ -55,7 +55,7 @@ module.exports = [
   },
   {
     id: 31,
-    name: 'Kalkidan',
+    displayName: 'Kalkidan',
     username: 'KalkidanMulatu',
     email: 'kalki@gmail.com',
     password: 'password5',
@@ -63,7 +63,7 @@ module.exports = [
   },
   {
     id: 43,
-    name: 'Kelly',
+    displayName: 'Kelly',
     username: 'KellyT',
     email: 'kelly@gmail.com',
     password: 'password6',
@@ -71,7 +71,7 @@ module.exports = [
   },
   {
     id: 78,
-    name: 'Ezra',
+    displayName: 'Ezra',
     username: 'EzraMoges',
     email: 'ezuyea@gmail.com',
     password: 'password7',
