@@ -50,6 +50,7 @@ function App() {
   socket = openSocket('ws://localhost:3000');
   socket.on('online users', function(data){
     console.log(data);
+    setOnlineUsers(data.map(d => d.email));
   })
   }, [])
 
@@ -86,7 +87,7 @@ function App() {
         </div>
 
         <div id="main-view" className="col-md-6">
-          <MainView view={view} changeView={changeView} user={user} mainViewUser={mainViewUser} allUsers={allUsers} selectedContent={selectedContent} setSelectedContent={setSelectedContent} />
+          <MainView onlineUsers={onlineUsers} view={view} changeView={changeView} user={user} mainViewUser={mainViewUser} allUsers={allUsers} selectedContent={selectedContent} setSelectedContent={setSelectedContent} />
         </div>
 
         <div id="right-side-bar" className="col-md-4">

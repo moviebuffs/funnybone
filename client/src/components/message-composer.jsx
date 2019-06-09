@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import toaster from 'toasted-notes';
 import io from 'socket.io-client';
 let socket = io(`http://localhost:8080`);
 /**

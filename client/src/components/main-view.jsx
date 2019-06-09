@@ -56,7 +56,7 @@ export function MainViewHeader(props) {
 export function MainViewBody(props) {
   const { parentProps } = props;
   const {
-    view, changeView, user, mainViewUser, allUsers, selectedContent, setSelectedContent,
+    view, changeView, user, onlineUsers, mainViewUser, allUsers, selectedContent, setSelectedContent,
   } = parentProps;
 
   const [userMatches, setUserMatches] = useState([]);
@@ -102,7 +102,7 @@ export function MainViewBody(props) {
 
     <div className="d-flex flex-row justify-content-between flex-wrap">
       { allUsers.filter(u => u.username !== user.username)
-        .map(u => <UserThumbPreview key={u.username} user={u} changeView={changeView} />) }
+        .map(u => <UserThumbPreview onlineUsers={onlineUsers} key={u.username} user={u} changeView={changeView} />) }
     </div>
 
   );
