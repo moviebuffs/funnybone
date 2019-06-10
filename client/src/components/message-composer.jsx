@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import io from 'socket.io-client';
-let socket = io(`http://localhost:8080`);
+
 /**
  * Message Composer is the DM view, it renders the message history
  * and the box at the bottom to send messages
@@ -44,7 +44,7 @@ function MessageComposer(props) {
         fromId: user.id,
         toId: mainViewUser.id,
       };
-    socket.emit('send message', message.content);
+   
       axios.post('/api/message', message).then(() => {
         fetchConvo();
       }).catch(() => {
