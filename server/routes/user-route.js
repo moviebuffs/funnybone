@@ -19,7 +19,7 @@ router.get('/', (req, res) => {
       res.send(err);
     });
 });
-
+              
 /**
  * This route post the saved user and checks verify the user and
  * if theres an error, sends one. else redirects
