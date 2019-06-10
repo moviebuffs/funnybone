@@ -16,6 +16,7 @@ function Match(props) {
   useEffect(() => {
     axios.post('/interests/user', { email: match.email })
       .then((res) => {
+        console.log(user, match);
         console.log(res);
         const interests = res.data.map(dbObj => dbObj.name);
         setInterests(interests);

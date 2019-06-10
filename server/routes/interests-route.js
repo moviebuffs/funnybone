@@ -33,6 +33,7 @@ router.post('/user', (req, res) => {
 
 router.post('/pull', (req, res) => {
   const { interests } = req.body;
+  console.log(interests);
   Promise.all(interests.map(int => findInterestsId(int))) // find interest ids that match names
     .then(intIdArr => Promise.all(intIdArr.map(intId => pullUsersFromInterests(intId))))
     .then(userIdData => {
