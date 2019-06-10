@@ -93,9 +93,17 @@ export function MainViewBody(props) {
     );
   }
   if (view === 'match') {
-    return (
-      <Match user={user} userMatches={userMatches} interests={interests} changeView={changeView} />
-    );
+    if (userMatches.length === 0) {
+      return (
+        <div>
+          <p>You have no matches! Try again later.</p>
+        </div>
+      );
+    } else {
+      return (
+        <Match user={user} userMatches={userMatches} interests={interests} changeView={changeView} />
+      );
+    }
   }
   // Browse
   return (

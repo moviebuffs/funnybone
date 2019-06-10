@@ -82,7 +82,7 @@ loginRoute.post('/',
     
   }
   io.emit('online users', onlineUsers);
-    res.redirect('/');
+  res.redirect('/');
   });
 
 
