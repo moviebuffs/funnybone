@@ -1,4 +1,4 @@
-# joke-me-off
+# funnybone
 a humor-based dating app that takes a light-hearted approach to bringing people together
 
 to start the app:
